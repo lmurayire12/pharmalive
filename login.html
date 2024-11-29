@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Manrope%3Awght%40400%3B500%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900"
+    />
+
+    <title>PharmaLive</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div class="flex items-center justify-center min-h-screen bg-[#f8fbfa]" style='font-family: Manrope, "Noto Sans", sans-serif;'>
+      <div class="max-w-md w-full p-4">
+        <h2> <img src="assets/logo2.png" width="500px" height="200px"> </h2>
+        <div class="flex flex-col gap-4">
+          <label class="flex flex-col">
+            <input
+              placeholder="Username"
+              class="form-input w-full rounded-xl text-[#0e1b13] focus:outline-none focus:ring-0 bg-[#e8f3ec] h-14 placeholder:text-[#4f966d] p-4 text-base font-normal"
+              value=""
+            />
+          </label>
+          <label class="flex flex-col">
+            <input
+              placeholder="Password"
+              type="password"
+              class="form-input w-full rounded-xl text-[#0e1b13] focus:outline-none focus:ring-0 bg-[#e8f3ec] h-14 placeholder:text-[#4f966d] p-4 text-base font-normal"
+              value=""
+            />
+          </label>
+        </div>
+        <p class="text-[#4f966d] text-sm font-normal leading-normal mt-2 mb-6 text-center underline">Forgot password?</p>
+        <div class="flex flex-col gap-3">
+          <button
+            class="h-12 rounded-xl bg-[#33e67e] text-[#0e1b13] text-base font-bold w-full"
+            onclick="login()"
+          >
+            Log in
+          </button>
+          <button
+            class="h-12 rounded-xl bg-transparent text-[#0e1b13] text-base font-bold w-full"
+          >
+            New user? Sign Up
+          </button>
+        </div>
+      </div>
+    </div>
+
+   <script>
+  function login() {
+    // Get the password input value
+    const passwordInput = document.querySelector('input[type="password"]');
+    
+    // Check if the password field is empty
+    if (passwordInput.value.trim() === "") {
+      alert("Please enter your password.");
+      return; // Exit the function if the password is empty
+    }
+
+    // Simulate a loading effect
+    document.body.innerHTML = '<div class="flex items-center justify-center min-h-screen bg-[#f8fbfa]"><h2>Loading...</h2></div>';
+    
+    // Redirect to home page after a short delay
+    setTimeout(function() {
+      window.location.href = "mainpage.html"; // Change this to your actual home page URL
+    }, 1000); // Delay of 1 second
+  }
+</script>
+  </body>
+</html>

@@ -1,0 +1,205 @@
+<html>
+<head>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Manrope%3Awght%40400%3B500%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<title>PharmaLive</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+  // Function to open the popup with medicine details
+  function showMedicineDetails(medicineName, pharmacies) {
+    const modal = document.getElementById("medicineModal");
+    const medicineNameElement = document.getElementById("medicineName");
+    const pharmacyListElement = document.getElementById("pharmacyList");
+    
+    // Set the content
+    medicineNameElement.innerText = medicineName;
+    pharmacyListElement.innerHTML = pharmacies.map(pharmacy => `<li>${pharmacy}</li>`).join("");
+    
+    // Show the modal
+    modal.style.display = "block";
+  }
+
+  // Function to close the popup
+  function closeMedicineDetails() {
+    const modal = document.getElementById("medicineModal");
+    modal.style.display = "none";
+  }
+</script>
+<script>
+  function showLoadingAndRedirect(url) {
+    // Show loading screen
+    document.body.innerHTML = '<div class="flex items-center justify-center min-h-screen bg-[#f8fbfa]"><h2>Loading...</h2></div>';
+    
+    // Redirect to the specified URL after a delay
+    setTimeout(function() {
+      window.location.href = url;
+    }, 1000);
+  }
+</script>
+</head>
+<body>
+<div class="flex justify-center p-4">
+<img alt="Logo" height="200px" src="assets/logo2.png" width="300px"/>
+</div>
+<div class="relative flex size-full min-h-screen flex-col bg-[#f8fbfa] group/design-root overflow-x-hidden" style='font-family: Manrope, "Noto Sans", sans-serif;'>
+<div class="flex flex-col gap-2 bg-[#f8fbfa] p-4 pb-2">
+<div class="flex items-center h-12 justify-end">
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 bg-transparent text-[#0e1b13] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0" onclick="showLoadingAndRedirect('profile.html');">
+<div class="text-[#0e1b13]" data-icon="User" data-size="24px" data-weight="regular">
+<svg fill="currentColor" height="24px" viewbox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path>
+</svg>
+</div>
+</button>
+</div>
+</div>
+<p class="text-[#0e1b13] tracking-light text-[28px] font-bold leading-tight">Medicine</p>
+</div>
+<!-- Search Section -->
+<div class="px-4 py-3">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+<div class="text-[#4f966d] flex border-none bg-[#e8f3ec] items-center justify-center pl-4 rounded-l-xl border-r-0" data-icon="MagnifyingGlass" data-size="24px" data-weight="regular">
+<svg fill="currentColor" height="24px" viewbox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+</svg>
+</div>
+<input ```html="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#0e1b13] focus:outline-0 focus:ring-0 border-none bg-[#e8f3ec] focus:border-none h-full placeholder:text-[#4f966d] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" class="" id="medicineSearch" placeholder="What do you need?" value=""/>
+<select class="form-select flex h-full rounded-r-xl border-none bg-[#e8f3ec] text-[#0e1b13] focus:outline-0 focus:ring-0" id="medicineDropdown">
+<option value="">Select Medicine</option>
+<option value="Tylenol">Nifedipine</option>
+<option value="Advil">Aspirine</option>
+<option value="Zyrtec">Lazix</option>
+<option value="Vitamin C">Carvediol</option>
+</select>
+<button class="bg-[#4f966d] text-white rounded-r-xl h-full px-4">Search</button>
+</div>
+</label>
+</div>
+<h3 class="text-[#0e1b13] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Popular Searches</h3>
+<div class="flex gap-3 p-3 flex-wrap pr-4">
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#e8f3ec] pl-4 pr-4">
+<p class="text-[#0e1b13] text-sm font-medium leading-normal">Aspirine</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#e8f3ec] pl-4 pr-4">
+<p class="text-[#0e1b13] text-sm font-medium leading-normal">Fervex</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#e8f3ec] pl-4 pr-4">
+<p class="text-[#0e1b13] text-sm font-medium leading-normal">Zyrtec</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#e8f3ec] pl-4 pr-4">
+<p class="text-[#0e1b13] text-sm font-medium leading-normal">Vitamin C</p>
+</div>
+</div>
+<h3 class="text-[#0e1b13] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Find your medicine</h3>
+<div class="flex items-center gap-4 bg-[#f8fbfa] px-4 min-h-[72px] py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14" style='background-image: url("https://www.helsenorge.no/48d5e7/globalassets/bilder/p-piller-brett.jpg?width=700&amp;hash=B7D7E0737131C305325D687D8E306B9250786C0DA8328AFC20476D7C45DDF287");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-[#0e1b13] text-base font-medium leading-normal line-clamp-1">Tylenol Extra Strength 500mg</p>
+</div>
+</div>
+<div class="shrink-0">
+<div class="text-[#0e1b13] flex size-7 items-center justify-center" data-icon="ArrowRight" data-size="24px" data-weight="regular" onclick= "showMedicineDetails('Tylenol Extra Strength 500mg', ['Teta Pharmacy Kanombe', 'Vine Pharmacy Kimironko' ]);">
+<svg fill="currentColor" height="24px" viewbox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72 ```html
+              72A8,8,0,0,1,221.66,133.66Z"></path>
+</svg>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-[#f8fbfa] px-4 min-h-[72px] py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14" style='background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXqAi31Yjzk71HiTvYwxQwx5piUsxChX_u0Q&s");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-[#0e1b13] text-base font-medium leading-normal line-clamp-1">Advil 200mg</p>
+</div>
+</div>
+<div class="shrink-0">
+<div class="text-[#0e1b13] flex size-7 items-center justify-center" data-icon="ArrowRight" data-size="24px" data-weight="regular" onclick="showMedicineDetails('Advil 200mg', ['KIPHARMA Pharmacy Remera']);">
+<svg fill="currentColor" height="24px" viewbox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path>
+</svg>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-[#f8fbfa] px-4 min-h-[72px] py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14" style='background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUOEHxuJud9na1imZpyjra2fNPENR5iWqkDA&s");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-[#0e1b13] text-base font-medium leading-normal line-clamp-1">Amoxicillin Tablets</p>
+</div>
+</div>
+<div class="shrink-0">
+<div class="text-[#0e1b13] flex size-7 items-center justify-center" data-icon="ArrowRight" data-size="24px" data-weight="regular">
+<svg fill="currentColor" height="24px" viewbox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path>
+</svg>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-[#f8fbfa] px-4 min-h-[72px] py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14" style='background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR40DFNdh7iY_EqsS0Cc3pmhfI6mIvQ3mc82T420HiU6MVWV9ipXetvUDvDFjVEGfDvAFM&usqp=CAU");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-[#0e1b13] text-base font-medium leading-normal line-clamp-1">Nifedi-Denk Tabs 20mg</p>
+</div>
+</div>
+<div class="shrink-0">
+<div class="text-[#0e1b13] flex size-7 items-center justify-center" data-icon="ArrowRight" data-size="24px" data-weight="regular" onclick="">
+<svg fill="currentColor" height="24px" viewbox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path>
+</svg>
+</div>
+</div>
+</div>
+<h3 class="text-[#0e1b13] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Pharmacies near you</h3>
+<div class="flex items-center gap-4 bg-[#f8fbfa] px-4 py-3 justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg h-14 w-fit" style='background-image: url("https://www.igihe.com/local/cache-vignettes/L480xH250/arton123577-f0259.png?1713871938");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-[#0e1b13] text-base font-medium leading-normal line-clamp-1">KIPHARMA KIMIRONKO</p>
+<p class="text-[#4f966d] text-sm font-normal leading-normal line-clamp-2">Open until 9:00 PM</p>
+</div>
+</div>
+<div class="shrink-0">
+<div class="text-[#0e1b13] flex size-7 items-center justify-center" data-icon="ArrowRight" data-size="24px" data-weight="regular">
+<svg fill="currentColor" height="24px" viewbox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path>
+</svg>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-[#f8fbfa] px-4 py-3 justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg h-14 w-fit" style='background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYKO74gmy3qTz-TPVq2aoCP3pffzkb6uJbVA&s");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-[#0e1b13] text-base font-medium leading-normal line-clamp-1">TETA Pharmacy</p>
+<p class="text-[#4f966d] text-sm font-normal leading-normal line-clamp-2">Open until 11:00 PM</p>
+</div>
+</div>
+<div class="shrink-0">
+<div ```html="24px" class="text-[#0e1b13] flex size-7 items-center justify-center" data-icon="ArrowRight" data-size="" data-weight="regular" onclick="showMedicineDetails('TEA Pharmacy KANOMBE', ['+25078999734', 'KK 389 St']);">
+<svg fill="currentColor" height="24px" viewbox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path>
+</svg>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-[#f8fbfa] px-4 py-3 justify-between">
+<div class="flex items-center gap-4">
+</div>
+</div>
+</div>
+<div class="h-5 bg-[#f8fbfa]"></div>
+</div>
+<!-- Modal for displaying medicine details -->
+<div id="medicineModal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); z-index:1000; background:white; padding:20px; border:1px solid #ccc; box-shadow: 0px 0px 10px rgba(0,0,0,0.1);">
+<h2 id="medicineName" style="margin-bottom: 10px;"></h2>
+<ul id="pharmacyList" style="list-style-type: none; padding: 0;"></ul>
+<button onclick="closeMedicineDetails()" style="margin-top: 10px;">Close</button> 
+</div>
+</body>
+</html>
