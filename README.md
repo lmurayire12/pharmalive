@@ -1,23 +1,28 @@
-PharmaLive - Medicine Finder App
+# PharmaLive - Medicine Finder App
+
 PharmaLive is a web-based application designed to help users quickly locate medicines at nearby pharmacies. By simply searching for a medicine, users can view a list of pharmacies that have the medication in stock, along with details like location and contact information.
 
-Technologies Used
-Frontend: HTML, CSS, JavaScript, Bootstrap
-Backend: MySQL (via XAMPP for local development)
-Database: MySQL
-Server: XAMPP (for running the PHP server)
-Features
-Medicine Search: Users can search for any medicine in the search bar.
-Nearby Pharmacies: View a list of pharmacies that have the searched medicine.
-Location Details: Each pharmacy entry includes relevant information such as contact details, availability of medicine, and its location.
-Installation
+## Technologies Used
+
+- **Frontend:** HTML, CSS, JavaScript, Bootstrap
+- **Backend:** MySQL (via XAMPP for local development)
+- **Database:** MySQL
+- **Server:** XAMPP (for running the PHP server)
+
+## Features
+
+- **Medicine Search:** Users can search for any medicine in the search bar.
+- **Nearby Pharmacies:** View a list of pharmacies that have the searched medicine.
+- **Location Details:** Each pharmacy entry includes relevant information such as contact details, availability of medicine, and its location.
+
+## Installation
+
 To run PharmaLive on your local machine:
 
-Clone the repository:
+1. **Clone the repository:**
 
-bash
-Copy code
-git clone https://github.com/yourusername/pharmalive.git
+   ```bash
+   git clone https://github.com/yourusername/pharmalive.git
 Set up XAMPP:
 
 Install XAMPP if you haven’t already.
